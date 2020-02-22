@@ -4,31 +4,38 @@ import MenuContainer from "../componetns/menuContainer/MenuContainer";
 
 export default class HomePage extends React.Component {
   state = {
-    titles: [
+    sections: [
       {
-        title: "one",
-        img_url: "",
-        id: 1
+        title: "hats",
+        imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
+        id: 1,
+        linkUrl: "shop/hats"
       },
       {
-        title: "two",
-        img_url: "",
-        id: 2
+        title: "jackets",
+        imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
+        id: 2,
+        linkUrl: "shop/jackets"
       },
       {
-        title: "three",
-        img_url: "",
-        id: 3
+        title: "sneakers",
+        imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
+        id: 3,
+        linkUrl: "shop/sneakers"
       },
       {
-        title: "four",
-        img_url: "",
-        id: 4
+        title: "womens",
+        imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
+        size: "large",
+        id: 4,
+        linkUrl: "shop/womens"
       },
       {
-        title: "five",
-        img_url: "",
-        id: 5
+        title: "mens",
+        imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
+        size: "large",
+        id: 5,
+        linkUrl: "shop/mens"
       }
     ]
   };
@@ -37,7 +44,7 @@ export default class HomePage extends React.Component {
     return (
       <div className="homepage">
         <h1>Welcome to my Homepage</h1>
-        <MenuContainer titles={this.state.titles} />
+        <MenuContainer titles={this.state.sections} />
       </div>
     );
   }
