@@ -6,8 +6,8 @@ export class MenuContainer extends Component {
   render() {
     return (
       <div className="directory-menu">
-        {this.props.titles.map(({ title, size, id, imageUrl }) => (
-          <MenuItem title={title} key={id} size={size} imageUrl={imageUrl} />
+        {this.props.titles.map(({ id, ...others }) => (
+          <MenuItem key={id} {...others} />
         ))}
       </div>
     );
