@@ -10,7 +10,7 @@ function MenuItem({ title, size, imageUrl }) {
       ></div>
       <div className="content">
         <div className="title">{title.toUpperCase()}</div>
-        <span className="subtitle">SHOP NOW</span>
+        <span className="subtitle">SHOP NOWs</span>
       </div>
     </div>
   );
