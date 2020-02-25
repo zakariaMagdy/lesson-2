@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  margin-bottom: 60px;
+
+  align-items: center;
+
+  &__logo {
+  }
+
+  &__options {
+    margin-left: auto;
+
+    &__link {
+      position: relative;
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+
+      &::after {
+        content: "";
+        width: 0;
+        background: black;
+        position: absolute;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        transition: width 0.3s ease-in-out;
+      }
+
+      &:hover {
+        color: black;
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

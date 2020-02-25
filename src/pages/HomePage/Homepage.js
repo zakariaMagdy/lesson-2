@@ -1,6 +1,6 @@
 import React from "react";
 import "./Homepage.scss";
-import MenuContainer from "../componetns/menuContainer/MenuContainer";
+import MenuContainer from "../../componetns/menuContainer/MenuContainer";
 
 export default class HomePage extends React.Component {
   state = {
@@ -43,7 +43,7 @@ export default class HomePage extends React.Component {
   render() {
     return (
       <div className="homepage">
-        <h1>Welcome to my Homepage</h1>
+        <h1 className="homepage__title">Welcome to my Homepage</h1>
         <MenuContainer titles={this.state.sections} />
       </div>
     );

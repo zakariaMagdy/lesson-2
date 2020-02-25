@@ -1,0 +1,22 @@
+html {
+  font-size: 62.5%;
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: 1.6rem;
+  color: $typeColor;
+  padding: 20px 60px;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #666;
+}

@@ -1,17 +1,25 @@
 import React from "react";
-import HomePage from "./pages/Homepage";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
-import "./App.scss";
+import HomePage from "./pages/HomePage/Homepage";
+import ShopPage from "./pages/ShopPage/ShopPage";
+import Header from "./componetns/Header/Header";
 
 ///
-
+const PageNotFount = () => <div>404</div>;
 class App extends React.Component {
   render() {
     return (
       <div className="App">
         <BrowserRouter>
+          <Header />
           <Switch>
             <Route exact path="/" component={HomePage} />
+            <Route exact path="/shop" component={ShopPage} />
+            <Route exact path="/shop/hats" component={PageNotFount} />
+            <Route exact path="/shop/jackets" component={PageNotFount} />
+            <Route exact path="/shop/womens" component={PageNotFount} />
+            <Route exact path="/shop/mens" component={PageNotFount} />
+            <Route component={PageNotFount} />
           </Switch>
         </BrowserRouter>
       </div>
