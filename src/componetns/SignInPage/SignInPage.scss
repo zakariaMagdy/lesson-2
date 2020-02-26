@@ -1,0 +1,11 @@
+.signinpage {
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin-bottom: 20px;
+    font-weight: 400;
+    color: #000;
+  }
+}
