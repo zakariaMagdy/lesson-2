@@ -12,9 +12,19 @@ function LableInput({ handelChange, label, ...other }) {
         name={other.name}
         className={`group__input ${other.name === "password" && "pass"}`}
         autoComplete="off"
+        onBlur={e => {
+          const label = e.target.parentElement.lastElementChild;
+          !e.target.value.length && label.classList.remove("shrink");
+        }}
       />
       {label && (
-        <label className={`group__label ${other.value.length && "shrink"}`}>
+        <label
+          className={`group__label ${other.value.length && "shrink"}`}
+          onClick={e => {
+            e.target.classList.add("shrink");
+            e.target.parentElement.firstElementChild.focus();
+          }}
+        >
           {label}
         </label>
       )}

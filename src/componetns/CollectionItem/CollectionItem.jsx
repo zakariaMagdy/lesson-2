@@ -6,7 +6,7 @@ function CollectionItem({ name, imageUrl, price }) {
     <div className="collectionItem">
       <figure className="collectionItem__figure">
         <button className="collectionItem__btn">add to chart </button>
-        <img className="collectionItem__image" src={imageUrl} />
+        <img className="collectionItem__image" src={imageUrl} alt="" />
       </figure>
       <div className="collectionItem__data">
         <p>{name}</p>

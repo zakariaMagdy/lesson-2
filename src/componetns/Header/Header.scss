@@ -11,6 +11,8 @@
     margin-left: auto;
 
     &__link {
+      display: inline-block;
+      cursor: pointer;
       position: relative;
       &:not(:last-child) {
         margin-right: 40px;

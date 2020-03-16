@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import LabelInput from "../LableInput/LableInput";
 import CustomButton from "../Button/Button";
+import { signInWithGoogle } from "../../fireBase/FireBaseConfig";
 import "./SignInPage.scss";
+import { withRouter } from "react-router-dom";
 
-export default class SignInPage extends Component {
+class SignInPage extends Component {
   state = {
     email: "",
     password: ""
@@ -41,9 +43,21 @@ export default class SignInPage extends Component {
             value={this.state.password}
             handelChange={this.handelChange}
           />
-          <CustomButton>sign in</CustomButton>
+          <div className="signinpage__btns">
+            <CustomButton>sign in</CustomButton>
+            <CustomButton
+              google
+              onClick={() => {
+                signInWithGoogle();
+              }}
+            >
+              sign in with google
+            </CustomButton>
+          </div>
         </form>
       </div>
     );
   }
 }
+
+export default withRouter(SignInPage);
