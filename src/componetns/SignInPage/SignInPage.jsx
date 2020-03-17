@@ -4,6 +4,7 @@ import CustomButton from "../Button/Button";
 import { signInWithGoogle } from "../../fireBase/FireBaseConfig";
 import "./SignInPage.scss";
 import { withRouter } from "react-router-dom";
+import { auth } from "../../fireBase/FireBaseConfig";
 
 class SignInPage extends Component {
   state = {
@@ -16,8 +17,15 @@ class SignInPage extends Component {
     this.setState({ [name]: value });
   };
 
-  handelSubmit = e => {
+  handelSubmit = async e => {
     e.preventDefault();
+    const { email, password } = this.state;
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+    } catch (e) {
+      console.log(e);
+    }
 
     this.setState({ email: "", password: "" });
   };

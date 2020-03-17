@@ -1,7 +1,7 @@
 .custom-button {
   min-width: 165px;
   width: auto;
-
+  margin: 0 0.2rem 0.5rem 0;
   letter-spacing: 0.5px;
   padding: 1.2rem;
   font-size: 15px;
@@ -31,9 +31,4 @@
       color: white;
     }
   }
-}
-
-.buttons {
-  display: flex;
-  justify-content: space-between;
 }

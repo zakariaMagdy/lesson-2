@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./SignupPage.scss";
 import CustomButton from "../Button/Button";
 import LabelInput from "../LableInput/LableInput";
+import { auth, createUserProfileDocument } from "../../fireBase/FireBaseConfig";
 
 export default class SignUpPage extends Component {
   state = {
@@ -16,15 +17,31 @@ export default class SignUpPage extends Component {
     this.setState({ [name]: value });
   };
 
-  handelSubmit = e => {
+  handelSubmit = async e => {
     e.preventDefault();
-    this.setState({
-      displayName: "",
-      email: "",
-      password: "",
-      confirmPassword: ""
-    });
-    console.log(this.state);
+    const { displayName, password, confirmPassword, email } = this.state;
+
+    if (password !== confirmPassword) {
+      alert("password don't match");
+      return;
+    }
+
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      await createUserProfileDocument(user, { displayName });
+
+      this.setState({
+        displayName: "",
+        email: "",
+        password: "",
+        confirmPassword: ""
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   render() {

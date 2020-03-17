@@ -9,6 +9,8 @@
 
   &__options {
     margin-left: auto;
+    display: flex;
+    align-items: center;
 
     &__link {
       display: inline-block;

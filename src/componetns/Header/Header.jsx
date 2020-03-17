@@ -1,20 +1,14 @@
 import React from "react";
 import "./Header.scss";
 import { ReactComponent as Logo } from "../../assets/4.4 crown.svg.svg";
+import CartIcon from "../CartItem/CartIcon";
+import CartDropDown from "../CartDropDown/CartDropDown";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { auth, signInWithGoogle } from "../../fireBase/FireBaseConfig";
+import { auth } from "../../fireBase/FireBaseConfig";
 import { setUser } from "../../redux/Users/actions";
 
-const signInSignOut = user => {
-  if (user) {
-    //signout
-  } else {
-    //signIn
-  }
-};
-
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, isShowCart }) => {
   return (
     <div className="header">
       <Link to="/">
@@ -42,14 +36,18 @@ const Header = ({ currentUser }) => {
             sign in
           </Link>
         )}
+
+        <CartIcon />
       </div>
+      {isShowCart && <CartDropDown />}
     </div>
   );
 };
 
 const mapStateToprop = state => {
   return {
-    currentUser: state.user
+    currentUser: state.user,
+    isShowCart: state.cart.show
   };
 };
 
