@@ -13,8 +13,8 @@ function CollectionPerview({ title, routeName, items, history, match }) {
     >
       <h1 className="collectionPerview__title">{title.toUpperCase()}</h1>
       <div className="collectionPerview__items">
-        {items.slice(0, 4).map(({ id, ...others }) => (
-          <CollectionItem key={id} {...others} />
+        {items.slice(0, 4).map(others => (
+          <CollectionItem key={others.id} {...others} />
         ))}
       </div>
     </div>

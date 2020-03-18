@@ -6,11 +6,11 @@ const cartState = {
 };
 
 const AddCartItem = (items, cartItem) => {
-  const IsExist = items.find(curr => curr.name === cartItem.name);
+  const IsExist = items.find(curr => curr.id === cartItem.id);
 
   if (IsExist) {
     return items.map(curr => {
-      if (curr.name === cartItem.name) {
+      if (curr.id === cartItem.id) {
         return { ...curr, quantity: curr.quantity + 1 };
       } else {
         return curr;

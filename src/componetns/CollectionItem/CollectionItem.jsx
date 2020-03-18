@@ -4,13 +4,13 @@ import "./CollectionItem.scss";
 import { connect } from "react-redux";
 import { addCartItem } from "../../redux/Cart/CartActions";
 
-function CollectionItem({ name, imageUrl, price, addCartItem }) {
+function CollectionItem({ id, name, imageUrl, price, addCartItem }) {
   return (
     <div className="collectionItem">
       <figure className="collectionItem__figure">
         <button
           className="collectionItem__btn"
-          onClick={() => addCartItem({ name, price, imageUrl })}
+          onClick={() => addCartItem({ id, name, price, imageUrl })}
         >
           add to chart{" "}
         </button>
