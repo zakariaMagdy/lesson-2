@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.scss";
 import { ReactComponent as Logo } from "../../assets/4.4 crown.svg.svg";
-import CartIcon from "../CartItem/CartIcon";
+import CartIcon from "../CartIcon/CartIcon";
 import CartDropDown from "../CartDropDown/CartDropDown";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";

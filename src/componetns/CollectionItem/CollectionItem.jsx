@@ -1,11 +1,19 @@
 import React from "react";
 import "./CollectionItem.scss";
 
-function CollectionItem({ name, imageUrl, price }) {
+import { connect } from "react-redux";
+import { addCartItem } from "../../redux/Cart/CartActions";
+
+function CollectionItem({ name, imageUrl, price, addCartItem }) {
   return (
     <div className="collectionItem">
       <figure className="collectionItem__figure">
-        <button className="collectionItem__btn">add to chart </button>
+        <button
+          className="collectionItem__btn"
+          onClick={() => addCartItem({ name, price, imageUrl })}
+        >
+          add to chart{" "}
+        </button>
         <img className="collectionItem__image" src={imageUrl} alt="" />
       </figure>
       <div className="collectionItem__data">
@@ -16,4 +24,4 @@ function CollectionItem({ name, imageUrl, price }) {
   );
 }
 
-export default CollectionItem;
+export default connect(null, { addCartItem })(CollectionItem);
