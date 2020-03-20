@@ -13,12 +13,13 @@ const CartDropDown = ({ cartItems }) => {
           <CartItem key={item.id} {...item} />
         ))}
       </div>
-      <CustomButton>Go to Checkout</CustomButton>
+      <CustomButton>Go to Checkout </CustomButton>
     </div>
   );
 };
 
-const mapStateToProps = ({ cart: { cartItems } }) => {
-  return { cartItems };
+const mapStateToProps = state => {
+  return { cartItems: state.cart.cartItems };
 };
+
 export default connect(mapStateToProps)(CartDropDown);

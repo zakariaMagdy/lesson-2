@@ -1,13 +1,13 @@
 import React from "react";
 import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
-import HomePage from "./pages/HomePage/Homepage";
-import ShopPage from "./pages/ShopPage/ShopPage";
-import Header from "./componetns/Header/Header";
-import SignPage from "./pages/SignPage/SignPage";
+import HomePage from "../../pages/HomePage/Homepage";
+import ShopPage from "../../pages/ShopPage/ShopPage";
+import Header from "../Header/Header";
+import SignPage from "../../pages/SignPage/SignPage";
 
-import { auth, createUserProfileDocument } from "./fireBase/FireBaseConfig";
+import { auth, createUserProfileDocument } from "../../fireBase/FireBaseConfig";
 
-import { setUser } from "./redux/Users/actions";
+import { setUser } from "../../redux/Users/actions";
 import { connect } from "react-redux";
 
 class App extends React.Component {

@@ -6,9 +6,8 @@ import CartDropDown from "../CartDropDown/CartDropDown";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { auth } from "../../fireBase/FireBaseConfig";
-import { setUser } from "../../redux/Users/actions";
 
-const Header = ({ currentUser, isShowCart }) => {
+const Header = ({ currentUser, isShowCart, toggleY }) => {
   return (
     <div className="header">
       <Link to="/">
@@ -51,4 +50,4 @@ const mapStateToprop = state => {
   };
 };
 
-export default connect(mapStateToprop, { setUser })(Header);
+export default connect(mapStateToprop)(Header);

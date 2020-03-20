@@ -4,13 +4,13 @@ import "./CollectionItem.scss";
 import { connect } from "react-redux";
 import { addCartItem } from "../../redux/Cart/CartActions";
 
-function CollectionItem({ id, name, imageUrl, price, addCartItem }) {
+function CollectionItem({ id, name, imageUrl, price, addItem }) {
   return (
     <div className="collectionItem">
       <figure className="collectionItem__figure">
         <button
           className="collectionItem__btn"
-          onClick={() => addCartItem({ id, name, price, imageUrl })}
+          onClick={() => addItem({ id, name, price, imageUrl })}
         >
           add to chart{" "}
         </button>
@@ -24,4 +24,8 @@ function CollectionItem({ id, name, imageUrl, price, addCartItem }) {
   );
 }
 
-export default connect(null, { addCartItem })(CollectionItem);
+const mapDispatchtoProps = dispatch => ({
+  addItem: item => dispatch(addCartItem(item))
+});
+
+export default connect(null, mapDispatchtoProps)(CollectionItem);
