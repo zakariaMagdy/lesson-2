@@ -6,8 +6,10 @@ import CartDropDown from "../CartDropDown/CartDropDown";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { auth } from "../../fireBase/FireBaseConfig";
+import { selectCartToggle } from "../../redux/Cart/CartSelector";
+import { selectCurrentUser } from "../../redux/Users/UserSelector";
 
-const Header = ({ currentUser, isShowCart, toggleY }) => {
+const Header = ({ currentUser, isShowCart }) => {
   return (
     <div className="header">
       <Link to="/">
@@ -45,8 +47,8 @@ const Header = ({ currentUser, isShowCart, toggleY }) => {
 
 const mapStateToprop = state => {
   return {
-    currentUser: state.user,
-    isShowCart: state.cart.show
+    currentUser: selectCurrentUser(state),
+    isShowCart: selectCartToggle(state)
   };
 };
 

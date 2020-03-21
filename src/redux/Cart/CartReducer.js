@@ -3,8 +3,7 @@ import cartType from "./CartTypes";
 
 const cartState = {
   show: false,
-  cartItems: [],
-  y: false
+  cartItems: []
 };
 
 export const CartReducer = (state = cartState, action) => {
