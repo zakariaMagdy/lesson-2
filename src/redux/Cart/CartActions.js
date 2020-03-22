@@ -4,17 +4,30 @@ export const toggleCartDropdown = () => ({
   type: cartType.TOGGLE_CART_DROPDOWN
 });
 
-export const addCartItem = ({ id, name, price, imageUrl }) => {
+export const addCartItem = item => {
   return {
     type: cartType.ADD_CART_ITEM,
-    payload: {
-      id,
-      name,
-      price,
-      imageUrl,
-      quantity: 1
-    }
+    payload: item
   };
 };
 
+export const removeCartItem = item => {
+  return {
+    type: cartType.REMOVE_CART_ITEM,
+    payload: item
+  };
+};
 
+export const increaseQuantity = item => {
+  return {
+    type: cartType.REMOVE_CART_ITEM,
+    payload: item
+  };
+};
+
+export const decreaseQuentity = item => {
+  return {
+    type: cartType.DECREASE_CART_ITEM,
+    payload: item
+  };
+};
