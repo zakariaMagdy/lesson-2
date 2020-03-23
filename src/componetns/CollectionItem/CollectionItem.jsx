@@ -12,7 +12,7 @@ function CollectionItem({ id, name, imageUrl, price, addItem }) {
           className="collectionItem__btn"
           onClick={() => addItem({ id, name, price, imageUrl })}
         >
-          add to chart{" "}
+          add to chart
         </button>
         <img className="collectionItem__image" src={imageUrl} alt="" />
       </figure>
