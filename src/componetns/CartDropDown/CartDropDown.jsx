@@ -6,7 +6,7 @@ import CartItem from "../CartIttem/CartItem";
 
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { selectCartItems } from "../../redux/Cart/CartSelector";
+import { selectCartItems } from "../../redux/Cart/cartSelector";
 import { toggleCartDropdown } from "../../redux/Cart/CartActions";
 
 const CartDropDown = ({ cartItems, history, dispatch }) => {

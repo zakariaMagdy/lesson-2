@@ -3,7 +3,7 @@ import "./CartIcon.scss";
 import { ReactComponent as ShoppingItem } from "../../assets/11.3 shopping-bag.svg.svg";
 import { connect } from "react-redux";
 import { toggleCartDropdown } from "../../redux/Cart/CartActions";
-import { selectCartItemscount } from "../../redux/Cart/CartSelector";
+import { selectCartItemscount } from "../../redux/Cart/cartSelector";
 
 const CartIcon = ({ toggleCartDropdown, itemsnum }) => {
   return (
