@@ -6,7 +6,7 @@ import CartDropDown from "../CartDropDown/CartDropDown";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { auth } from "../../fireBase/FireBaseConfig";
-import { selectCartToggle } from "../../redux/Cart/CartSelector";
+import { selectCartToggle } from "../../redux/Cart/cartSelector";
 import { selectCurrentUser } from "../../redux/Users/UserSelector";
 
 const Header = ({ currentUser, isShowCart }) => {
