@@ -21,7 +21,7 @@ export const auth = firebase.auth();
 //fireStore
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
-  const userRef = await firestore.doc(`users/${userAuth.uid}`);
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
   const snapShot = await userRef.get();
 
   if (!snapShot.exists) {
@@ -40,6 +40,38 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     }
   }
   return userRef;
+};
+
+export const createCollectionAndDocuments = async (
+  collectionName,
+  ArrofObjects
+) => {
+  const createCollectionRef = firestore.collection(collectionName); //create collection with id by name
+  const batch = firestore.batch(); //create batch to group our set request
+
+  ArrofObjects.forEach(obj => {
+    const createDocRef = createCollectionRef.doc(); //create a doc in our collection
+    batch.set(createDocRef, obj);
+  });
+
+  await batch.commit().then(curr => console.log(curr, "success")); //return promise
+};
+
+export const getTransformedData = snapshot => {
+  const transformedCollections = snapshot.docs.map(doc => {
+    const { title, items } = doc.data();
+    return {
+      id: doc.id,
+      routaName: encodeURI(title.toLowerCase()),
+      title,
+      items
+    };
+  });
+
+  return transformedCollections.reduce((accumilation, collection) => {
+    accumilation[collection.title.toLowerCase()] = collection;
+    return accumilation;
+  }, {});
 };
 
 //auth

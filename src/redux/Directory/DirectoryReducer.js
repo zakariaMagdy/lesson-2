@@ -1,7 +1,7 @@
-import INITIAL_STATE from "./Shop_Data";
+import { DirectoryTypes } from "./DirectoryTypes";
 
 const StateReducer = {
-  items: INITIAL_STATE,
+  items: null,
   collections: [
     {
       title: "hats",
@@ -40,6 +40,8 @@ const StateReducer = {
 
 export const DirectoryReducer = (state = StateReducer, action) => {
   switch (action.type) {
+    case DirectoryTypes.ADD_COLLECTIONS_ITEMS:
+      return { ...state, items: action.payload };
     default:
       return state;
   }

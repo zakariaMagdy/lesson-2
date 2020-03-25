@@ -12,12 +12,12 @@ export const selectSections = createSelector(
 );
 
 export const selectItemsforPerview = createSelector([selectItems], items =>
-  Object.values(items)
+  items ? Object.values(items) : []
 );
 
 export const selectCategory = categoryUrl =>
   createSelector(
     [selectItems],
 
-    items => items[categoryUrl]
+    items => (items ? items[categoryUrl] : null)
   );

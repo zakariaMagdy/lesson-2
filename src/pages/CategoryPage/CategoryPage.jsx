@@ -20,4 +20,5 @@ const CategoryPage = ({ category }) => {
 const mapStateToProps = (state, ownProps) => {
   return { category: selectCategory(ownProps.match.params.categoryId)(state) };
 };
+
 export default connect(mapStateToProps)(CategoryPage);
