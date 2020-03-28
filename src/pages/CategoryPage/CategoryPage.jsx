@@ -2,7 +2,7 @@ import React from "react";
 import "./CategoryPage.scss";
 import CollectionItem from "../../componetns/CollectionItem/CollectionItem";
 import { connect } from "react-redux";
-import { selectCategory } from "../../redux/Directory/DirectorySelector";
+import { selectCategory } from "../../redux/Shop/shopSelector";
 
 const CategoryPage = ({ category }) => {
   return (

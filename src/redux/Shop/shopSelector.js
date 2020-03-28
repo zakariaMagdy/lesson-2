@@ -1,15 +1,8 @@
 import { createSelector } from "reselect";
 
-const directorySelector = state => state.directory;
+const shopSelector = state => state.shop;
 
-export const selectItems = createSelector(
-  [directorySelector],
-  directory => directory.items
-);
-export const selectSections = createSelector(
-  [directorySelector],
-  directory => directory.collections
-);
+export const selectItems = createSelector([shopSelector], shop => shop.items);
 
 export const selectItemsforPerview = createSelector([selectItems], items =>
   items ? Object.values(items) : []
@@ -21,3 +14,8 @@ export const selectCategory = categoryUrl =>
 
     items => (items ? items[categoryUrl] : null)
   );
+
+export const selectIsFetching = createSelector(
+  [shopSelector],
+  shop => shop.isloading
+);

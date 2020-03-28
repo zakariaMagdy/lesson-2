@@ -1,8 +1,5 @@
-import { DirectoryTypes } from "./DirectoryTypes";
-
-const StateReducer = {
-  items: null,
-  collections: [
+const INITAL_STATE = {
+  sections: [
     {
       title: "hats",
       imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
@@ -38,10 +35,8 @@ const StateReducer = {
   ]
 };
 
-export const DirectoryReducer = (state = StateReducer, action) => {
+export const SectionReducer = (state = INITAL_STATE, action) => {
   switch (action.type) {
-    case DirectoryTypes.ADD_COLLECTIONS_ITEMS:
-      return { ...state, items: action.payload };
     default:
       return state;
   }

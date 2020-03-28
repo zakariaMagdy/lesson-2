@@ -4,7 +4,7 @@ import "./CollectionOverview.scss";
 import CollectionPerview from "../CollectionPerview/CollectionPerview";
 
 import { connect } from "react-redux";
-import { selectItemsforPerview } from "../../redux/Directory/DirectorySelector";
+import { selectItemsforPerview } from "../../redux/Shop/shopSelector";
 
 const CollectionOverview = ({ collections }) => {
   return (

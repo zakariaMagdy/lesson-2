@@ -5,10 +5,9 @@ import { Route } from "react-router-dom";
 import CollectionOverview from "../../componetns/CollectionOverview/CollectionOverview";
 import CategoryPage from "../CategoryPage/CategoryPage";
 
-import { firestore, getTransformedData } from "../../fireBase/FireBaseConfig";
-
 import { connect } from "react-redux";
-import { AddCollections } from "../../redux/Directory/DirectoryActions";
+import { fetchingData } from "../../redux/Shop/ShopActions";
+import { selectIsFetching } from "../../redux/Shop/shopSelector";
 
 import WithSpinner from "../../componetns/WithSpinner/WithSpinner";
 
@@ -19,22 +18,10 @@ const CategoryPageWithSpinenr = WithSpinner(CategoryPage);
 
 ///////////////
 
-const ShopPage = ({ match, AddDataToDirectory }) => {
-  const [isloading, setIsloading] = useState(true);
-
+const ShopPage = ({ match, AddDataToShop, isfetching }) => {
   useEffect(() => {
-    (async () => {
-      const collectionsRef = firestore.collection("collections");
-
-      const unsubscripeCollectionsSnap = collectionsRef.onSnapshot(snapshot => {
-        // get data
-        const CollectionMap = getTransformedData(snapshot);
-        //add data to redux by action
-
-        AddDataToDirectory(CollectionMap);
-        setIsloading(false);
-      });
-    })();
+    AddDataToShop();
+    console.log(isfetching);
   }, []);
   return (
     <div className="shop-page">
@@ -42,14 +29,14 @@ const ShopPage = ({ match, AddDataToDirectory }) => {
         exact
         path={`${match.path}`}
         render={props => (
-          <CollectionOverviewWithSpinner isLoading={isloading} />
+          <CollectionOverviewWithSpinner isLoading={isfetching} />
         )}
       />
 
       <Route
         path={`${match.path}/:categoryId`}
         render={props => (
-          <CategoryPageWithSpinenr isLoading={isloading} {...props} />
+          <CategoryPageWithSpinenr isLoading={isfetching} {...props} />
         )}
       />
     </div>
@@ -57,8 +44,14 @@ const ShopPage = ({ match, AddDataToDirectory }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  AddDataToDirectory: collections => dispatch(AddCollections(collections))
+  AddDataToShop: () => dispatch(fetchingData())
 });
 
-export default connect(null, mapDispatchToProps)(ShopPage);
+const mapStateToProps = state => {
+  return {
+    isfetching: selectIsFetching(state)
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShopPage);
 //old-sky.surge.sh
