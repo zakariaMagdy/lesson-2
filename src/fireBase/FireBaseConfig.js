@@ -75,9 +75,22 @@ export const getTransformedData = snapshot => {
 };
 
 //auth
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: "select_account" });
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
 
-export const signInWithGoogle = () => auth.signInWithPopup(provider); //use it for onClick event
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider); //use it for onClick event
+
+export const checkSignIn = () => {
+  return new Promise((resolve, reject) => {
+    try {
+      const unsubscripe = auth.onAuthStateChanged(snap => {
+        unsubscripe();
+        resolve(snap);
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 
 export default firebase;

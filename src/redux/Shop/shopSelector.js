@@ -15,7 +15,7 @@ export const selectCategory = categoryUrl =>
     items => (items ? items[categoryUrl] : null)
   );
 
-export const selectIsFetching = createSelector(
-  [shopSelector],
-  shop => shop.isloading
+export const selectItemsFetshingState = createSelector(
+  [selectItems],
+  items => !!items
 );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./ShopPage.scss";
 
 import { Route } from "react-router-dom";
@@ -6,8 +6,8 @@ import CollectionOverview from "../../componetns/CollectionOverview/CollectionOv
 import CategoryPage from "../CategoryPage/CategoryPage";
 
 import { connect } from "react-redux";
-import { fetchingData } from "../../redux/Shop/ShopActions";
-import { selectIsFetching } from "../../redux/Shop/shopSelector";
+import { fetchingDataStart } from "../../redux/Shop/ShopActions";
+import { selectItemsFetshingState } from "../../redux/Shop/shopSelector";
 
 import WithSpinner from "../../componetns/WithSpinner/WithSpinner";
 
@@ -21,7 +21,6 @@ const CategoryPageWithSpinenr = WithSpinner(CategoryPage);
 const ShopPage = ({ match, AddDataToShop, isfetching }) => {
   useEffect(() => {
     AddDataToShop();
-    console.log(isfetching);
   }, []);
   return (
     <div className="shop-page">
@@ -29,14 +28,14 @@ const ShopPage = ({ match, AddDataToShop, isfetching }) => {
         exact
         path={`${match.path}`}
         render={props => (
-          <CollectionOverviewWithSpinner isLoading={isfetching} />
+          <CollectionOverviewWithSpinner isLoading={!isfetching} />
         )}
       />
 
       <Route
         path={`${match.path}/:categoryId`}
         render={props => (
-          <CategoryPageWithSpinenr isLoading={isfetching} {...props} />
+          <CategoryPageWithSpinenr isLoading={!isfetching} {...props} />
         )}
       />
     </div>
@@ -44,12 +43,12 @@ const ShopPage = ({ match, AddDataToShop, isfetching }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  AddDataToShop: () => dispatch(fetchingData())
+  AddDataToShop: () => dispatch(fetchingDataStart())
 });
 
 const mapStateToProps = state => {
   return {
-    isfetching: selectIsFetching(state)
+    isfetching: selectItemsFetshingState(state)
   };
 };
 

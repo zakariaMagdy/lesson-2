@@ -5,11 +5,11 @@ import CartIcon from "../CartIcon/CartIcon";
 import CartDropDown from "../CartDropDown/CartDropDown";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { auth } from "../../fireBase/FireBaseConfig";
 import { selectCartToggle } from "../../redux/Cart/cartSelector";
 import { selectCurrentUser } from "../../redux/Users/UserSelector";
+import { signOutStart } from "../../redux/Users/UserAction";
 
-const Header = ({ currentUser, isShowCart }) => {
+const Header = ({ currentUser, isShowCart, signOut }) => {
   return (
     <div className="header">
       <Link to="/">
@@ -24,12 +24,7 @@ const Header = ({ currentUser, isShowCart }) => {
           Contact
         </Link>
         {currentUser ? (
-          <div
-            className="header__options__link"
-            onClick={() => {
-              auth.signOut();
-            }}
-          >
+          <div className="header__options__link" onClick={signOut}>
             Sign out
           </div>
         ) : (
@@ -52,4 +47,8 @@ const mapStateToprop = state => {
   };
 };
 
-export default connect(mapStateToprop)(Header);
+const mapDispatchToProps = dispatch => ({
+  signOut: () => dispatch(signOutStart())
+});
+
+export default connect(mapStateToprop, mapDispatchToProps)(Header);

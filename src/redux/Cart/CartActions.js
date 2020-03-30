@@ -31,3 +31,7 @@ export const decreaseQuentity = item => {
     payload: item
   };
 };
+
+export const clearCart = () => ({
+  type: cartType.CLEAR_CART
+});

@@ -8,38 +8,14 @@ import Header from "../Header/Header";
 import SignPage from "../../pages/SignPage/SignPage";
 import CheckoutPage from "../../pages/CheckoutPage/CheckoutPage";
 
-import { auth, createUserProfileDocument } from "../../fireBase/FireBaseConfig";
-
-import { setUser } from "../../redux/Users/UserAction";
 import { selectCurrentUser } from "../../redux/Users/UserSelector";
 
+import { checkUserState } from "../../redux/Users/UserAction";
+
 class App extends React.Component {
-  closeSubscription = null;
   componentDidMount() {
-    const { setCurrentUser } = this.props; //action for add data to store
-
-    this.closeSubscription = auth.onAuthStateChanged(async userAuth => {
-      try {
-        if (userAuth) {
-          const userRef = await createUserProfileDocument(userAuth);
-
-          userRef.onSnapshot(snapshot => {
-            setCurrentUser({
-              id: snapshot.id,
-              ...snapshot.data()
-            });
-          });
-        } else {
-          setCurrentUser(null);
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    });
-  }
-
-  componentWillUnmount() {
-    this.closeSubscription();
+    const { checkState } = this.props;
+    checkState();
   }
   render() {
     return (
@@ -68,7 +44,7 @@ const mapStateToProps = state => ({
   currentuser: selectCurrentUser(state)
 });
 
-const mapDispatchtoProps = dispatch => ({
-  setCurrentUser: user => dispatch(setUser(user))
+const mapDispatchToProps = dispatch => ({
+  checkState: () => dispatch(checkUserState())
 });
-export default connect(mapStateToProps, mapDispatchtoProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

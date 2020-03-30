@@ -1,0 +1,14 @@
+.error-box {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40vw;
+  background: #e74c3c;
+  border-top-right-radius: 5px;
+
+  padding: 10px;
+  p {
+    color: #fff;
+    line-height: 1.5;
+  }
+}
